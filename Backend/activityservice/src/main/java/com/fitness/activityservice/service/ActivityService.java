@@ -4,11 +4,11 @@ import com.fitness.activityservice.dto.ActivityRequest;
 import com.fitness.activityservice.dto.ActivityResponse;
 import com.fitness.activityservice.model.Activity;
 import com.fitness.activityservice.repo.ActivityRepo;
-import org.jspecify.annotations.Nullable;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
+
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -18,7 +18,17 @@ public class ActivityService {
     @Autowired
     private ActivityRepo activityRepo;
 
+    @Autowired
+    private UserValidationService userValidationService;
+
     public ActivityResponse trackActivity(ActivityRequest request) {
+
+        //validating user with use of webclient for making call to user-service
+        boolean isValid = userValidationService.validateUser(request.getUserId());
+
+        if(!isValid) {
+            throw new RuntimeException("Invalid user");
+        }
         Activity activity = Activity.builder()
                 .userId(request.getUserId())
                 .type(request.getType())
@@ -35,6 +45,7 @@ public class ActivityService {
 
     }
 
+    //method to build ActivityResponse using Activity obj
     private ActivityResponse mapToResponse(Activity activity){
         ActivityResponse response = new ActivityResponse();
         response.setId(activity.getId());
