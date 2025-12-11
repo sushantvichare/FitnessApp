@@ -32,9 +32,15 @@ List the major frameworks/libraries used for both the frontend and backend.
 
 \* \[RabbitMq]
 
+\* \[Keycloak]
+
 \* \[Postgres]
 
 \* \[MongoDB](www.mongodb.com)
+
+\*\*AI service:\*\*
+
+\* \[Gemini API]
 
 \## Getting Started
 
