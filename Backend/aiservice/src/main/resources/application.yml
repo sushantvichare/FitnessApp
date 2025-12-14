@@ -2,7 +2,11 @@ spring:
   application:
     name: ai-service
 
+
+  gemini:
+    api:
+      url: ${GEMINI_API_URL}
+      key: ${GEMINI_API_KEY}
+
   config:
-    import:
-      optional:
-        configserver: http://localhost:8888
+    import: optional:configserver:http://localhost:8888

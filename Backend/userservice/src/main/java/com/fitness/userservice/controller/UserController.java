@@ -15,6 +15,7 @@ public class UserController {
     @Autowired
     private UserService userService;
 
+
     @GetMapping("/{userID}")
     public ResponseEntity<UserResponse> getUserProfile(@PathVariable String userID) {
         return ResponseEntity.ok(userService.getUserProfile(userID));
@@ -28,7 +29,7 @@ public class UserController {
 
     @GetMapping("/{userID}/validate")
     public ResponseEntity<Boolean> validateUser(@PathVariable String userID) {
-        return ResponseEntity.ok(userService.existsByUserId(userID));
+        return ResponseEntity.ok(userService.existsByKeyclockId(userID));
     }
 
 

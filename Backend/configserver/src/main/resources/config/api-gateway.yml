@@ -2,7 +2,7 @@ spring:
 
 
   cloud:
-    gateway:
+    gateway.server.webflux:
       routes:
         - id: user-service
           uri: lb://USER-SERVICE
@@ -28,3 +28,10 @@ eureka:
 
 server:
   port: 8080
+
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          jwk-set-uri: http://localhost:8181/realms/fitness-oauth2/protocol/openid-connect/certs
+          issuer-uri: http://localhost:8181/realms/fitness-oauth2

@@ -16,6 +16,8 @@ public class RegisterRequest {
     @Size(min = 6, max = 30 ,message = "Password should be 6-30 chars.")
     private String password;
 
+    private String keyCloakId;
+
     private String firstName;
     private String lastName;
 
