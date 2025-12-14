@@ -5,9 +5,9 @@ import com.fitness.userservice.dto.RegisterRequest;
 import com.fitness.userservice.dto.UserResponse;
 import com.fitness.userservice.model.User;
 import com.fitness.userservice.repo.UserRepo;
-import jdk.jshell.spi.ExecutionControl;
+
 import lombok.extern.slf4j.Slf4j;
-import org.jspecify.annotations.Nullable;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -41,7 +41,7 @@ public class UserService {
 
             UserResponse userResponse = new UserResponse();
             userResponse.setId(existingUser.getId());
-            userResponse.setKeyCloakId(existingUser.getKeyCloakId());
+            userResponse.setKeycloakId(existingUser.getKeycloakId());
             userResponse.setEmail(existingUser.getEmail());
             userResponse.setPassword(existingUser.getPassword());
             userResponse.setFirstName(existingUser.getFirstName());
@@ -54,6 +54,7 @@ public class UserService {
         User user = new User();
         user.setEmail(request.getEmail());
         user.setPassword(request.getPassword());
+        user.setKeycloakId(request.getKeycloakId());
         user.setFirstName(request.getFirstName());
         user.setLastName(request.getLastName());
 
@@ -62,7 +63,7 @@ public class UserService {
         UserResponse userResponse = new UserResponse();
 
         userResponse.setId(savedUser.getId());
-        userResponse.setKeyCloakId(savedUser.getKeyCloakId());
+        userResponse.setKeycloakId(savedUser.getKeycloakId());
         userResponse.setEmail(savedUser.getEmail());
         userResponse.setPassword(savedUser.getPassword());
         userResponse.setFirstName(savedUser.getFirstName());
@@ -74,8 +75,10 @@ public class UserService {
         return userResponse;
     }
 
-    public Boolean existsByKeycloakId(String userID) {
+    public Boolean existsByUserId(String userID) {
         log.info("Calling User Validation API for user id {}", userID);
-        return  userRepo.existsKeycloakId(userID);
+        return  userRepo.existsByKeycloakId(userID);
     }
+
+
 }
