@@ -1,8 +1,8 @@
 import { Card, CardContent, Grid, Typography } from "@mui/material";
 import React, { useEffect, useState } from "react";
 
-import { useNavigate } from "react-router-dom";
-import { getActivities } from "../api/activities";
+import { useNavigate } from "react-router";
+import { getActivities } from "../services/api.js";
 
 function ActivityList() {
   const [activities, setActivities] = useState([]);

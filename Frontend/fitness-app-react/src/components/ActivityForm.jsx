@@ -9,7 +9,7 @@ import {
   TextField,
 } from "@mui/material";
 
-import { addActivity } from "../api/activities";
+import { addActivity } from "../services/api.js";
 
 function ActivityForm({ onActivitiesAdded }) {
   const [activity, setActivity] = useState({
