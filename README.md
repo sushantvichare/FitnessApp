@@ -2,9 +2,9 @@
 
 Its an Full-Stack AI-Powered Fitness Project built with Microservices Arch.
 
-\## Live Application Link
 
-\[Project Name Live](https://www.example.com)
+
+
 
 \## Screenshots / Demo
 ![image alt](https://github.com/sushantvichare/FitnessApp/blob/master/fitapp0.jpg?raw=true)
